@@ -10,12 +10,13 @@ const languageCode = config.dialogFlowSessionLanguageCode;
 const credentials = {
     client_email: config.googleClientEmail,
     private_key:
-    config.googlePrivateKey,
+    config.googlePrivateKey.replace(new RegExp('\\\\n', '\g'), '\n'),
 };
-
+console.log(credentials);
 const sessionClient = new dialogflow.SessionsClient({projectId, credentials});
+console.log(sessionClient);
 const sessionPath = sessionClient.sessionPath(projectId, sessionId);
-
+console.log(sessionPath);
 
 module.exports = {
     textQuery: async function(text, parameters = {}) {
