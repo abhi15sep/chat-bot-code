@@ -6,7 +6,6 @@ const config = require('../config/keys');
 const projectId = config.googleProjectID;
 const sessionId = config.dialogFlowSessionID;
 const languageCode = config.dialogFlowSessionLanguageCode;
-console.log(config.googlePrivateKey);
 
 const credentials = {
     client_email: config.googleClientEmail,
@@ -60,13 +59,8 @@ module.exports = {
         let responses = await sessionClient.detectIntent(request);
         responses = await self.handleAction(responses);
         return responses;
-
     },
-
-
     handleAction: function(responses){
         return responses;
     },
-
-
 }
